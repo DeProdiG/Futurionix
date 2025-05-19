@@ -1,0 +1,76 @@
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 10.0 MB/256 MB - Gita > Start upgrade from 0.0.0
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Array
+(
+    [`wp_newsletter_emails`] => Created table `wp_newsletter_emails`
+)
+
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Array
+(
+    [`wp_newsletter_sent`] => Created table `wp_newsletter_sent`
+)
+
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Array
+(
+    [`wp_newsletter`] => Created table `wp_newsletter`
+)
+
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Array
+(
+    [`wp_newsletter_user_logs`] => Created table `wp_newsletter_user_logs`
+)
+
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Array
+(
+    [`wp_newsletter_user_meta`] => Created table `wp_newsletter_user_meta`
+)
+
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Array
+(
+    [`wp_newsletter_stats`] => Created table `wp_newsletter_stats`
+)
+
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Array
+(
+    [`wp_newsletter_logs`] => Created table `wp_newsletter_logs`
+)
+
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > Backing up options of 0.0.0
+06-04-2025 16:02:02 - INFO  - 8.7.6 - 9.9 MB/256 MB - Gita > End
+07-04-2025 13:52:30 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Start upgrade from 8.7.6
+07-04-2025 13:52:30 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Array
+(
+    [`wp_newsletter_emails`] => Created table `wp_newsletter_emails`
+)
+
+07-04-2025 13:52:30 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Array
+(
+    [`wp_newsletter_sent`] => Created table `wp_newsletter_sent`
+)
+
+07-04-2025 13:52:30 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Array
+(
+    [`wp_newsletter`] => Created table `wp_newsletter`
+)
+
+07-04-2025 13:52:30 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Array
+(
+    [`wp_newsletter_user_logs`] => Created table `wp_newsletter_user_logs`
+)
+
+07-04-2025 13:52:31 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Array
+(
+    [`wp_newsletter_user_meta`] => Created table `wp_newsletter_user_meta`
+)
+
+07-04-2025 13:52:31 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Array
+(
+    [`wp_newsletter_stats`] => Created table `wp_newsletter_stats`
+)
+
+07-04-2025 13:52:31 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Array
+(
+    [`wp_newsletter_logs`] => Created table `wp_newsletter_logs`
+)
+
+07-04-2025 13:52:31 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > Backing up options of 8.7.6
+07-04-2025 13:52:31 - INFO  - 8.7.7 - 9.6 MB/128 MB - Gita > End
