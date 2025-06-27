@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Services Carousel
  * Slug: cozy-essential-addons/saaslauncher-service-carousel
- * Categories: saaslauncher
+ * Categories: saaslauncher-service
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/icon_41.png',

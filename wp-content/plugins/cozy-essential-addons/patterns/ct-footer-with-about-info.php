@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Footer with About Info
  * Slug: cozy-essential-addons/ct-footer-with-about-info
- * Categories: ct-patterns,footer
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"7rem","bottom":"3rem"}}},"backgroundColor":"heading-color","textColor":"foreground-alt","layout":{"type":"constrained","contentSize":"1180px"}} -->

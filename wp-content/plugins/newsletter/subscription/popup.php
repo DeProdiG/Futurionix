@@ -16,9 +16,8 @@ if (!$controls->is_action()) {
     }
 }
 
-$leads_active = class_exists('NewsletterLeads') && NewsletterLeads::$instance->popup_enabled;
-if ($leads_active) {
-    $controls->warnings[] = 'The Newsletter Leads Addon is active, we recommend to configure the popup on that addon page';
+if (class_exists('NewsletterLeads')) {
+    $controls->warnings[] = 'The Newsletter Leads Addon is active: disable this popup and configure the <a href="?page=newsletter_leads_index">full-featured popup</a>';
 }
 ?>
 
@@ -28,7 +27,6 @@ if ($leads_active) {
 
     <div id="tnp-heading">
         <?php $controls->title_help('/subscription') ?>
-<!--        <h2><?php esc_html_e('Forms', 'newsletter') ?></h2>-->
         <?php include __DIR__ . '/nav-forms.php' ?>
     </div>
 

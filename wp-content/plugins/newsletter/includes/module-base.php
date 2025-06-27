@@ -39,6 +39,11 @@ class NewsletterModuleBase {
         return self::$is_allowed;
     }
 
+    function is_html_allowed() {
+        if (defined('NEWSLETTER_HTML_ALLOWED') && NEWSLETTER_HTML_ALLOWED) return true;
+        return current_user_can('unfiltered_html');
+    }
+
     function is_multilanguage() {
         return self::$is_multilanguage;
     }
@@ -234,6 +239,11 @@ class NewsletterModuleBase {
      * An empty array is returned if no language is available.
      */
     static function get_languages() {
+
+        if (defined('NEWSLETTER_MULTILANGUAGE') && !NEWSLETTER_MULTILANGUAGE) {
+            return [];
+        }
+
         $language_options = [];
 
         // WPML

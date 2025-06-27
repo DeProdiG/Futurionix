@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Footer Minimal Primary Color Shade
  * Slug: cozy-essential-addons/ct-footer-minimal-primary-shade
- * Categories: ct-patterns,footer
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"5rem","bottom":"3rem"}}},"gradient":"third-primary-gradient","layout":{"type":"constrained","contentSize":"1200px"}} -->

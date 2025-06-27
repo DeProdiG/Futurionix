@@ -3,7 +3,7 @@
 /**
  * Title: PRO: FAQ Accordion
  * Slug: cozy-essential-addons/saaslauncher-faq
- * Categories: saaslauncher
+ * Categories: saaslauncher-faqs
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"7rem","bottom":"7rem","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"background-alt","layout":{"type":"constrained","contentSize":"760px"}} -->

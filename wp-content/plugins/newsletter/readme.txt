@@ -1,7 +1,7 @@
 === Newsletter - Send awesome emails from WordPress ===
 Tags: newsletter, subscription, email marketing, welcome email, signup forms
-Tested up to: 6.7.2
-Stable tag: 8.7.7
+Tested up to: 6.8.1
+Stable tag: 8.9.1
 Contributors: satollo,webagile
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -128,6 +128,94 @@ Thank you, The Newsletter Team
 3. The Reports extension
 
 == Changelog ==
+
+= 8.9.1 =
+
+* Fixed max emails per second to be a decimal number less than 1
+* Fixed subscribers pagination when the database is empty
+* Improved "controls" for post selection
+* Added the NEWSLETTER_MULTILANGUAGE constant: when set to false the multilanguage features are disabled
+* Added the NEWSLETTER_SEND_DELAY constant (see our documentation)
+
+= 8.9.0 =
+
+* Fixed PHP admin warning
+
+= 8.8.9 =
+
+* Fixed the primary button alert
+
+= 8.8.8 =
+
+* Optimized the mailer addon code to be loaded only when needed
+* Added role and aria-level attribute to heading block
+* Style fix on admin panels
+* Fixed some PHP warnings
+
+= 8.8.7 =
+
+* Fixed link to the legacy themes
+
+= 8.8.6 =
+
+* Fixed hero block image alt attribute
+* Fixed the minimal widget
+* Composer code refactoring
+* Fixed composer modals on welcome email
+* Removed the old presets
+* Updated the composer templates
+* Added warning if the confirmation email is missing the correct URL
+* Added sending time window (see main settings)
+* Improved the Help/Delivery page
+* Removed HTML filter for users with unfiltered html capability to avoid custom block breaking
+
+= 8.8.5 =
+
+* Added more content filters to prevent XSS (write us if you have issues on saving options or editing content)
+* Fixed PHP warnings
+* Optimized composer code
+* Limited access to delivery addon to administrators
+
+= 8.8.4 =
+
+* Fixed fatal error on welcome email editing
+
+= 8.8.3 =
+
+* Fixed the S. Valentine template
+* Changed the main CSS configuration validation
+* Fixed button padding lost when saving a newsletter
+
+= 8.8.2 =
+
+* Added full editor to the title block
+* Added no list filter on subscribers' page
+* WP 6.8.1 check
+* Option to get the reason when the email cannot be refreshed (mainly for Automated)
+* Added more checks on "unfiltered_html" capability
+
+= 8.8.1 =
+
+* Added nfid hidden form field to manage form submission custom data
+
+= 8.8.0 =
+
+* Added shortcode attributes support to old HTML forms
+* Improved popup code to be compatibile with js minifiers and lazy loading
+
+= 8.7.9 =
+
+* Fixed commit
+
+= 8.7.8 =
+
+* Added Spotify
+* Improved license, addons and news caching
+* WP 6.8 check
+* Added ajax attribute to the newsletter_form shortcode
+* Added filter "subscription date" for targeting
+* Moved geo filters on the targeting panel
+* Improved the antispam logging
 
 = 8.7.7 =
 

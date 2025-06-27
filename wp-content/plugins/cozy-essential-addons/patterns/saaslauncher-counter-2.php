@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Stats Counter 2
  * Slug: cozy-essential-addons/saaslauncher-counter-2
- * Categories: saaslauncher
+ * Categories: saaslauncher-number
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|40","left":"var:preset|spacing|40","top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"light-color","layout":{"type":"constrained","contentSize":"1260px"}} -->

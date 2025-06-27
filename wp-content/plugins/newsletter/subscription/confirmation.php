@@ -44,6 +44,16 @@ if (!$controls->is_action()) {
         }
 
         $options = $this->get_options('', $language);
+
+        // Process the email before filtering the options, otherwise the wp_kses_post() will
+        // break the email content.
+        $email = Newsletter::instance()->get_email($options['confirmation_email_id']);
+        $email->track = Newsletter::instance()->get_option('track');
+        NewsletterComposer::update_email($email, $controls);
+        $email = $this->save_email($email);
+
+        $controls->data = wp_kses_post_deep($controls->data);
+
         $options['confirmation_message'] = NewsletterModule::clean_url_tags($controls->data['confirmation_message']);
         $options['confirmation_subject'] = $controls->data['confirmation_subject'];
         $options['confirmation_email'] = $controls->data['confirmation_email'];
@@ -52,11 +62,6 @@ if (!$controls->is_action()) {
         $options['confirmation_url'] = $controls->data['confirmation_url'];
 
         $this->save_options($options, '', $language);
-
-        $email = Newsletter::instance()->get_email($options['confirmation_email_id']);
-        $email->track = Newsletter::instance()->get_option('track');
-        NewsletterComposer::update_email($email, $controls);
-        $email = $this->save_email($email);
 
         $controls->add_toast_saved();
         $controls->data = $options;
@@ -78,6 +83,13 @@ foreach (['confirmation_message', 'confirmation_text'] as $key) {
         $controls->data[$key . '_custom'] = '1';
     }
 }
+
+if (!empty($controls->data['confirmation_email'])) {
+    if (strpos($controls->data['message'], '{subscription_confirm_url}') === false &&
+            strpos($controls->data['message'], '{confirmation_url}') === false) {
+        $controls->warnings = 'A button or link with the <code>{confirmation_url}</code> placeholder is missing.';
+    }
+}
 ?>
 
 <div class="wrap" id="tnp-wrap">
@@ -86,12 +98,10 @@ foreach (['confirmation_message', 'confirmation_text'] as $key) {
 
     <div id="tnp-heading">
         <?php $controls->title_help('/subscription') ?>
-<!--        <h2><?php esc_html_e('Subscription', 'newsletter') ?></h2>-->
         <?php include __DIR__ . '/nav.php' ?>
     </div>
 
     <div id="tnp-body">
-
 
         <?php $controls->show(); ?>
 
@@ -101,7 +111,7 @@ foreach (['confirmation_message', 'confirmation_text'] as $key) {
 
             <p>
 
-                <?php //esc_html_e('Only for double opt-in mode.', 'newsletter') ?></p>
+                <?php //esc_html_e('Only for double opt-in mode.', 'newsletter')  ?></p>
             </p>
 
             <div id="tabs">
@@ -112,7 +122,7 @@ foreach (['confirmation_message', 'confirmation_text'] as $key) {
 
                 <div id="tabs-settings">
 
-                    <?php //$this->language_notice(); ?>
+                    <?php //$this->language_notice();  ?>
 
                     <table class="form-table">
                         <tr>
@@ -147,7 +157,7 @@ foreach (['confirmation_message', 'confirmation_text'] as $key) {
 
                 <div id="tabs-email">
 
-                    <?php //$this->language_notice(); ?>
+                    <?php //$this->language_notice();  ?>
 
                     <?php $controls->select('confirmation_email', ['0' => __('Default', 'newsletter'), '1' => __('Composer', 'newsletter')]); ?>
 
@@ -165,7 +175,7 @@ foreach (['confirmation_message', 'confirmation_text'] as $key) {
                     <?php } ?>
 
                     <div id="tnp-composer-confirmation" style="display: none" data-tnpshow="confirmation_email=1">
-                        <?php $controls->composer_v3(true, false); ?>
+                        <?php $controls->composer_v3(true, false, 'confirmation'); ?>
                     </div>
 
                     <div id="tnp-standard-confirmation" style="display: none" data-tnpshow="confirmation_email=0">

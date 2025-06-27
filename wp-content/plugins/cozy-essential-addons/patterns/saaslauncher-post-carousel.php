@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Latest Post Carousel
  * Slug: cozy-essential-addons/saaslauncher-post-carousel
- * Categories: saaslauncher
+ * Categories: saaslauncher-post
  */
 ?>
 <!-- wp:group {"metadata":{"categories":["saaslauncher"],"patternName":"cozy-essential-addons/saaslauncher-post-carousel","name":"Latest News and Articles"},"style":{"spacing":{"padding":{"top":"7rem","bottom":"7rem","left":"0","right":"0"}}},"backgroundColor":"black-color","layout":{"type":"constrained","contentSize":"100%"}} -->

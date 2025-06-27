@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Testimonial Modern Light
  * Slug: cozy-essential-addons/saaslauncher-testimonial-light
- * Categories: saaslauncher
+ * Categories: saaslauncher-testimonial
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/rating_star.png',

@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Services Grid
  * Slug: cozy-essential-addons/saaslauncher-service-grid
- * Categories: saaslauncher
+ * Categories: saaslauncher-service
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/work_1.png',

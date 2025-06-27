@@ -3,7 +3,7 @@
 /**
  * Title: PRO: How We Work
  * Slug: cozy-essential-addons/saaslauncher-how-we-work
- * Categories: saaslauncher
+ * Categories: saaslauncher-about
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|40","left":"var:preset|spacing|40","top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"light-color","layout":{"type":"constrained","contentSize":"1260px"}} -->

@@ -4,7 +4,7 @@
   Plugin Name: Newsletter
   Plugin URI: https://www.thenewsletterplugin.com
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="https://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
-  Version: 8.7.7
+  Version: 8.9.1
   Author: Stefano Lissa & The Newsletter Team
   Author URI: https://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -30,7 +30,7 @@
 
  */
 
-define('NEWSLETTER_VERSION', '8.7.7');
+define('NEWSLETTER_VERSION', '8.9.1');
 
 global $wpdb, $newsletter;
 
@@ -91,18 +91,18 @@ if (!defined('NEWSLETTER_FORMS_MAX'))
     define('NEWSLETTER_FORMS_MAX', 10);
 
 spl_autoload_register(function ($class) {
-    static $prefix = 'Newsletter\\';
     static $dir = __DIR__ . '/classes/';
 
-    $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) !== 0) {
-        return;
-    }
+    if (strncmp('Newsletter', $class, 10) === 0) {
+        $file = $dir . str_replace('\\', '/', $class) . '.php';
 
-    $file = $dir . str_replace('\\', '/', $class) . '.php';
-
-    if (file_exists($file)) {
-        require $file;
+        if (file_exists($file)) {
+//            if (NEWSLETTER_DEBUG) {
+//                $memory = size_format(memory_get_usage(), 1);
+//                error_log($memory . ' - Loading ' . $class);
+//            }
+            require $file;
+        }
     }
 });
 
@@ -112,7 +112,6 @@ require_once NEWSLETTER_INCLUDES_DIR . '/module-base.php';
 require_once NEWSLETTER_INCLUDES_DIR . '/module.php';
 require_once NEWSLETTER_INCLUDES_DIR . '/TNP.php';
 require_once NEWSLETTER_INCLUDES_DIR . '/cron.php';
-require_once NEWSLETTER_INCLUDES_DIR . '/composer-class.php';
 
 class Newsletter extends NewsletterModule {
 
@@ -188,7 +187,7 @@ class Newsletter extends NewsletterModule {
             $this->action = sanitize_key($_REQUEST['na']);
             $this->do_action();
         } else {
-            die('No axction specified');
+            die('No action specified');
         }
         die();
     }
@@ -247,8 +246,13 @@ class Newsletter extends NewsletterModule {
 
         do_action('newsletter_init');
 
-        if (is_admin() && !wp_next_scheduled('newsletter_clean')) {
-            wp_schedule_event(time() + HOUR_IN_SECONDS, 'weekly', 'newsletter_clean');
+        if (is_admin()) {
+            if (!wp_next_scheduled('newsletter_clean')) {
+                wp_schedule_event(time() + HOUR_IN_SECONDS, 'weekly', 'newsletter_clean');
+            }
+            if (!wp_next_scheduled('newsletter_update')) {
+                wp_schedule_event(time() + HOUR_IN_SECONDS * 2, 'daily', 'newsletter_update');
+            }
         }
         add_action('newsletter_clean', [$this, 'newsletter_clean']);
     }
@@ -331,24 +335,23 @@ class Newsletter extends NewsletterModule {
      */
     function setup_language() {
 
+        if (defined('NEWSLETTER_MULTILANGUAGE') && !NEWSLETTER_MULTILANGUAGE) {
+            return;
+        }
+
         self::$is_multilanguage = apply_filters('newsletter_is_multilanguage', class_exists('SitePress') || function_exists('pll_default_language') || class_exists('TRP_Translate_Press'));
 
         if (self::$is_multilanguage) {
             self::$language = self::_get_current_language();
-
-//            if (!is_admin()) {
-//                // For plugin, like Translatepress that does not detrmine the language on AJAX calls
-//                setcookie('tnpl', self::$language, time() + DAY_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN, is_ssl());
-//            } elseif (defined('DOING_AJAX') && DOING_AJAX) {
-//                if (!self::$language && isset($_COOKIE['tnpl'])) {
-//                    self::$language = $this->sanitize_language($_COOKIE['tnpl']);
-//                }
-//            }
             self::$locale = self::get_locale(self::$language);
         }
     }
 
     static function _get_current_language() {
+
+        if (defined('NEWSLETTER_MULTILANGUAGE') && !NEWSLETTER_MULTILANGUAGE) {
+            return '';
+        }
 
         // WPML
         if (class_exists('SitePress')) {
@@ -389,6 +392,9 @@ class Newsletter extends NewsletterModule {
                 });
             }
         }
+        $data = ['action_url' => admin_url('admin-ajax.php')];
+        wp_enqueue_script('newsletter', $this->plugin_url() . '/main.js', [], NEWSLETTER_VERSION, true);
+        wp_localize_script('newsletter', 'newsletter_data', $data);
     }
 
     function get_message_key_from_request() {
@@ -485,7 +491,7 @@ class Newsletter extends NewsletterModule {
 
         $this->logger->debug(__METHOD__ . '> Start');
 
-        if (!$this->set_lock('engine', NEWSLETTER_CRON_INTERVAL * 2)) {
+        if (!$this->set_lock('engine', NEWSLETTER_CRON_INTERVAL * 1.2)) {
             $this->logger->fatal('Delivery engine lock already set: can be due to concurrente executions or fatal error during delivery');
             return;
         }
@@ -544,7 +550,23 @@ class Newsletter extends NewsletterModule {
     }
 
     function skip_this_run($email = null) {
-        return (boolean) apply_filters('newsletter_send_skip', false, $email);
+        $skip = false;
+
+        $schedule = $this->get_main_option('schedule');
+
+        $this->logger->debug('Schedule: ' . $schedule);
+
+        if ($schedule) {
+
+            $hour = gmdate('G') + get_option('gmt_offset');
+            $start = (int) $this->get_main_option('schedule_start');
+            $end = (int) $this->get_main_option('schedule_end');
+
+            $skip = $hour < $start || $hour > $end;
+            $this->logger->debug('Skip: ' . ($skip ? 'true' : 'false'));
+        }
+
+        return (bool) apply_filters('newsletter_send_skip', $skip, $email);
     }
 
     function get_runs_per_hour() {
@@ -621,6 +643,8 @@ class Newsletter extends NewsletterModule {
     function send($email, $users = null, $test = false) {
         global $wpdb;
 
+        $options = $this->get_main_options();
+
         if (is_array($email)) {
             $email = (object) $email;
         }
@@ -642,8 +666,10 @@ class Newsletter extends NewsletterModule {
 
         if (!$supplied_users) {
 
+
+
             if ($this->skip_this_run($email)) {
-                $this->logger->info(__METHOD__ . '> Asked to skip this run');
+                $this->logger->info(__METHOD__ . '> Out of the sending time window');
                 return true;
             }
 
@@ -671,7 +697,7 @@ class Newsletter extends NewsletterModule {
 
             if (empty($users)) {
                 $this->logger->info(__METHOD__ . '> No more users, set as sent');
-                $wpdb->query("update " . NEWSLETTER_EMAILS_TABLE . " set status='sent', total=sent where id=" . ((int)$email->id) . " limit 1");
+                $wpdb->query("update " . NEWSLETTER_EMAILS_TABLE . " set status='sent', total=sent where id=" . ((int) $email->id) . " limit 1");
                 //do_action('newsletter_ended_sending_newsletter', $email);
                 do_action('newsletter_send_end', $email);
                 return true;
@@ -1072,7 +1098,7 @@ class Newsletter extends NewsletterModule {
             return $value;
         }
 
-        $extensions = $this->getTnpExtensions();
+        $extensions = Newsletter\Addons::get_addons();
 
         // Ops...
         if (!$extensions) {
@@ -1179,35 +1205,7 @@ class Newsletter extends NewsletterModule {
      * @return array
      */
     function getTnpExtensions() {
-
-        $extensions_json = get_transient('tnp_extensions_json');
-
-        if (empty($extensions_json)) {
-            $url = "http://www.thenewsletterplugin.com/wp-content/extensions.json?ver=" . NEWSLETTER_VERSION;
-            $extensions_response = wp_remote_get($url);
-
-            if (is_wp_error($extensions_response)) {
-                // Cache anyway for blogs which cannot connect outside
-                $extensions_json = '[]';
-                set_transient('tnp_extensions_json', $extensions_json, 72 * 60 * 60);
-                $this->logger->error($extensions_response);
-            } else {
-
-                $extensions_json = wp_remote_retrieve_body($extensions_response);
-
-                // Not clear cases
-                if (empty($extensions_json) || !json_decode($extensions_json)) {
-                    $this->logger->error('Invalid json from thenewsletterplugin.com: retrying in 72 hours');
-                    $this->logger->error('JSON: ' . $extensions_json);
-                    $extensions_json = '[]';
-                }
-                set_transient('tnp_extensions_json', $extensions_json, 72 * 60 * 60);
-            }
-        }
-
-        $extensions = json_decode($extensions_json);
-
-        return $extensions;
+        return Newsletter\Addons::get_addons();
     }
 
     function clear_extensions_cache() {
@@ -1396,6 +1394,7 @@ class Newsletter extends NewsletterModule {
 $newsletter = Newsletter::instance();
 
 // Frontend modules
+require_once NEWSLETTER_DIR . '/composer/composer.php';
 require_once NEWSLETTER_DIR . '/users/users.php';
 require_once NEWSLETTER_DIR . '/subscription/subscription.php';
 require_once NEWSLETTER_DIR . '/emails/emails.php';

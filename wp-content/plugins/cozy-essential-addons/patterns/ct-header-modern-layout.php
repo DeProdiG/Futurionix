@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Header Modern Layout
  * Slug: cozy-essential-addons/ct-header-modern-layout
- * Categories: ct-patterns,header
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"0","bottom":"0","right":"var:preset|spacing|60","left":"var:preset|spacing|60"},"blockGap":"0"},"elements":{"link":{"color":{"text":"var:preset|color|background"}}},"color":{"background":"#0c0c0d"}},"textColor":"background","className":"ct-patterns-mdoern-header","layout":{"type":"constrained","contentSize":"100%"}} -->

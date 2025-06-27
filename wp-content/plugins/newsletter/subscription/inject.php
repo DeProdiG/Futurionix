@@ -19,9 +19,8 @@ if (!$controls->is_action()) {
 $posts = get_posts(['posts_per_page' => 1]);
 $last_post_url = $posts ? get_the_permalink($posts[0]) : null;
 
-$leads_active = class_exists('NewsletterLeads') && NewsletterLeads::$instance->inject_bottom_enabled;
-if ($leads_active) {
-    $controls->warnings[] = 'The Newsletter Leads Addon is active, we recommend to configure the injections on that addon page';
+if (class_exists('NewsletterLeads')) {
+    $controls->warnings[] = 'The Newsletter Leads Addon is active: disable this injection and configure the <a href="?page=newsletter_leads_inject">full-featured injection</a>';
 }
 ?>
 
@@ -31,7 +30,6 @@ if ($leads_active) {
 
     <div id="tnp-heading">
         <?php $controls->title_help('/subscription') ?>
-<!--        <h2><?php esc_html_e('Forms', 'newsletter') ?></h2>-->
         <?php include __DIR__ . '/nav-forms.php' ?>
     </div>
 

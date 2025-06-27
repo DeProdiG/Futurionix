@@ -1,10 +1,10 @@
-=== Cozy Essential Addons ===
+=== Theme Demo Importer and Patterns Library for CozyThemes - Cozy Essential Addons ===
 Contributors: CozyThemes
 Tags: portfolios, testimonials, teams, faqs, demo-importer
 Requires PHP: 7.3.0
 Requires at least: 5.9
-Tested up to: 6.7
-Stable tag: 1.2.48
+Tested up to: 6.8
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,16 +12,7 @@ Cozy Essential Addons is the free WordPress plugin for Custom post type and prov
 
 == Description ==
 
-Cozy Essential Addons is the free WordPress plugins, which provide basic skeletal for custom post type. The basic ideas is to provides base functionality of custom post type so that we will extend the features and layout for our  products like plugins and themes. The plugin is the basically companion plugin for our  products but it isn’t dependent on any theme or plugin so anyone could use this plugin for any products with 100% Free.
-
-
-= Custom Post Types =
-1. Portfolios
-2. Testimonials
-3. Teams
-4. Services
-5. FAQs
-6. Promotions
+Cozy Essentials Addons is the ultimate companion plugin for CozyThemes users, offering seamless one-click demo imports and a rich library of pre-designed block patterns to help you quickly build stunning websites. Designed to work perfectly with themes like FotaWP, ReviveNews, Storemate, and more, this lightweight plugin lets you instantly replicate professional starter sites, complete with layouts and content, while also enabling theme-specific enhancements for an optimized building experience. Whether you're launching a blog, store, or business site, Cozy Essentials Addons makes website creation faster, easier, and more powerful.
 
 = Display shortcode of post type in site =
 To display post data in your site, please checkout [shortcodes][https://cozythemes.com/cozy-essential-addons/] in plugin details page.
@@ -53,6 +44,16 @@ If you are developer you can extend the code as your requirement, find the sampl
 
 
 == Changelog ==
+= 1.3.1 - May  31, 2025 = 
+* Added: New Pre-built Page Template for SaasLauncher Pro
+
+= 1.3.0 - May  25, 2025 = 
+* Added: New Demo importer for Orakus
+
+= 1.2.49 - April 18, 2025 = 
+* SaasLauncher's patterns are organized categorically.
+* Tested up to 6.8
+
 = 1.2.48 - April 03, 2025 = 
 * Added & Improved 50+ pre-built sections for SaasLauncher
 

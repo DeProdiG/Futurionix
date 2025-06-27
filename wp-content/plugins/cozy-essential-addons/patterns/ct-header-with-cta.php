@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Header with buttons
  * Slug: cozy-essential-addons/ct-header-with-cta
- * Categories: ct-patterns, header
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}},"layout":{"type":"constrained","contentSize":"100%"}} -->

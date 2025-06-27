@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Banner Style 2
  * Slug: cozy-essential-addons/saaslauncher-banner-2
- * Categories: saaslauncher
+ * Categories: saaslauncher-hero
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/users_face.png',

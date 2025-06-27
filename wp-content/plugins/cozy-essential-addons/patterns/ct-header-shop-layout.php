@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Header shop with Product Search 
  * Slug: cozy-essential-addons/ct-header-shop-layout
- * Categories: ct-patterns,header
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}},"className":"ct-patterns-shop-header","layout":{"type":"constrained","contentSize":"100%"}} -->

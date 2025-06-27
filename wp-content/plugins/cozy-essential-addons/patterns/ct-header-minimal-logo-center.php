@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Header Logo Centered
  * Slug: cozy-essential-addons/ct-header-logo-center
- * Categories: ct-patterns,header
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"24px","right":"var:preset|spacing|40","bottom":"24px","left":"var:preset|spacing|40"}},"border":{"bottom":{"color":"#f1f1f5","width":"1px"}}},"className":"ct-patterns-nav-logocentered","layout":{"type":"constrained","contentSize":"1200px"}} -->

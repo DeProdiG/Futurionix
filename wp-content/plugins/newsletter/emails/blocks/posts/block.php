@@ -182,7 +182,8 @@ if (!empty($options['reverse'])) {
 }
 
 if ($context['type'] === 'automated' && $posts) {
-    $out['subject'] = $posts[0]->post_title;
+    // There are blogs where the post title is html encoded, maybe old databases?
+    $out['subject'] = html_entity_decode($posts[0]->post_title, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401, 'UTF-8');
 }
 
 $current_language = Newsletter::instance()->get_current_language();
@@ -242,7 +243,7 @@ foreach ($posts as $p) {
             tnp_post_title($post);
 
     $post->title_linked = '<a href="' . esc_attr($post->url) . '" inline-class="title" class="tnpc-inline-editable"'
-            . ' data-type="title" data-id="' . esc_attr($post->ID) . '" dir="' . esc_attr($dir) . '">'
+            . ' data-type="title" data-id="' . esc_attr($post->ID) . '" dir="' . esc_attr($dir) . '" role="heading" aria-level="2">'
             . $post->title . '</a>';
 
     $post->excerpt = TNP_Composer::is_post_field_edited_inline($options['inline_edits'], 'text', $post->ID) ?
@@ -250,7 +251,7 @@ foreach ($posts as $p) {
             tnp_post_excerpt($post, $excerpt_length, $excerpt_length_in_chars);
 
     $post->excerpt_linked = '<a href="' . esc_attr($post->url) . '" inline-class="excerpt" class="tnpc-inline-editable" '
-            . 'data-type="text" data-id="' . esc_attr($post->ID) . '" dir="' . esc_attr($dir) . '">'
+            . 'data-type="text" data-id="' . esc_attr($post->ID) . '" dir="' . esc_attr($dir) . '" role="paragraph">'
             . $post->excerpt . '</a>';
 
     $post->meta = [];

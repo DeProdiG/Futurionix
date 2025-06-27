@@ -8,7 +8,6 @@ class NewsletterWidgetMinimal extends WP_Widget {
     }
 
     function widget($args, $instance) {
-
         $newsletter = Newsletter::instance();
         $current_language = $newsletter->get_current_language();
 
@@ -52,19 +51,19 @@ class NewsletterWidgetMinimal extends WP_Widget {
     }
 
     function update($new_instance, $old_instance) {
-        return $new_instance;
+        return wp_kses_post_deep($new_instance);
     }
 
     function form($instance) {
         if (!is_array($instance)) {
-            $instance = array();
+            $instance = [];
         }
         $newsletter = Newsletter::instance();
         $current_language = $newsletter->get_current_language();
         $profile_options = NewsletterSubscription::instance()->get_options('profile', $current_language);
-        $instance = array_merge(array('title' => '', 'text' => '', 'button' => $profile_options['subscribe'], 'nl' => array()), $instance);
+        $instance = array_merge(array('title' => '', 'text' => '', 'button' => '', 'nl' => []), $instance);
         if (!is_array($instance['nl'])) {
-            $instance['nl'] = array();
+            $instance['nl'] = [];
         }
         ?>
         <p>
@@ -83,7 +82,7 @@ class NewsletterWidgetMinimal extends WP_Widget {
         <p>
             <?php esc_html_e('Automatically subscribe to', 'newsletter') ?>
             <br>
-             <?php
+            <?php
             $lists = Newsletter::instance()->get_lists_public();
             foreach ($lists as $list) {
                 ?>
@@ -96,9 +95,8 @@ class NewsletterWidgetMinimal extends WP_Widget {
 
         <?php
     }
-
 }
 
-add_action('widgets_init', function() {
+add_action('widgets_init', function () {
     return register_widget("NewsletterWidgetMinimal");
 });

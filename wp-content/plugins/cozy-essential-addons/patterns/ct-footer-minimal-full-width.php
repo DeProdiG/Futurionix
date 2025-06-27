@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Footer Minimal Full Width
  * Slug: cozy-essential-addons/ct-footer-minimal-full-width
- * Categories: ct-patterns,footer
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"5rem","bottom":"var:preset|spacing|30","left":"0","right":"0"},"blockGap":"0"}},"backgroundColor":"background","layout":{"type":"constrained","contentSize":"100%"}} -->

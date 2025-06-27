@@ -3,7 +3,7 @@
 /**
  * Title: PRO: About Section with Full Image
  * Slug: cozy-essential-addons/saaslauncher-about-full-image
- * Categories: saaslauncher
+ * Categories: saaslauncher-about
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/about.jpg',

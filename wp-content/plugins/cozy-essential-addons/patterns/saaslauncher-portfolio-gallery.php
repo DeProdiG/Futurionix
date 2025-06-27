@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Portfolio Gallery
  * Slug: cozy-essential-addons/saaslauncher-portfolio-gallery
- * Categories: saaslauncher
+ * Categories: saaslauncher-gallery
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/g1.jpg',

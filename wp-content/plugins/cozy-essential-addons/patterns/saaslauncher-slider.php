@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Slider
  * Slug: cozy-essential-addons/saaslauncher-slider
- * Categories: saaslauncher
+ * Categories: saaslauncher-hero
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/slider_1.jpg',

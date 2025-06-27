@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Features & Benefits
  * Slug: cozy-essential-addons/saaslauncher-features-benefits
- * Categories: saaslauncher
+ * Categories: saaslauncher-service
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/icon_51.png',

@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Team Grid with Details
  * Slug: cozy-essential-addons/saaslauncher-team-grid-with-details
- * Categories: saaslauncher
+ * Categories: saaslauncher-team
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/team_1.jpg',

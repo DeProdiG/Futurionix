@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Featured Content with Sticky Style
  * Slug: cozy-essential-addons/saaslauncher-featured-content
- * Categories: saaslauncher
+ * Categories: saaslauncher-about
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/icon_button.png',

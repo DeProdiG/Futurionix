@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Hero Section Simple
  * Slug: cozy-essential-addons/saaslauncher-hero-simple
- * Categories: saaslauncher
+ * Categories: saaslauncher-hero
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/about.jpg',

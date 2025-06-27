@@ -2,10 +2,10 @@
 /*
   Plugin Name: Cool Timeline
   Plugin URI:https://cooltimeline.com
-  Description:Cool Timeline is a responsive WordPress timeline plugin that allows you to create beautiful vertical storyline. You simply create posts, set images and date then Cool Timeline will automatically populate these posts in chronological order, based on the year and date
-  Version:3.0.0
+  Description:Showcase your story, company history, events, or roadmap using stunning vertical or horizontal layouts.
+  Version:3.0.3
   Author:Cool Plugins
-  Author URI:https://coolplugins.net
+  Author URI:https://coolplugins.net/?utm_source=ctl_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=dashboard
   License:GPLv2 or later
   License URI: https://www.gnu.org/licenses/gpl-2.0.html
   Domain Path: /languages
@@ -20,13 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Configuration */
 if ( ! defined( 'CTL_V' ) ) {
-	define( 'CTL_V', '3.0.0' );
+	define( 'CTL_V', '3.0.3' );
 }
 // define constants for later use
 define( 'CTL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'CTL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 if ( ! defined( 'CTL_DEMO_URL' ) ) {
-	define( 'CTL_DEMO_URL', 'https://cooltimeline.com/demo/?utm_source=ctl_plugin&utm_medium=inside&utm_campaign=demo' );
+	define( 'CTL_DEMO_URL', 'https://cooltimeline.com/demo/cool-timeline-pro/?utm_source=ctl_plugin&utm_medium=inside&utm_campaign=demo' );
 }
 if ( ! defined( 'CTL_BUY_PRO' ) ) {
 	define( 'CTL_BUY_PRO', 'https://cooltimeline.com/plugin/cool-timeline-pro/' );
@@ -123,15 +123,15 @@ if ( ! class_exists( 'CoolTimeline' ) ) {
 
 			/* Loaded Backend files only */
 			if ( is_admin() ) {
-				// Codestar
-				/* Plugin Settings panel */
-
-				require_once CTL_PLUGIN_DIR . 'admin/codestar-framework/codestar-framework.php';
-				require_once CTL_PLUGIN_DIR . 'admin/ctl-admin-settings.php';
+				
 				require_once CTL_PLUGIN_DIR . 'admin/feedback/users-feedback.php';
 				// including timeline stories meta boxes class
-				require CTL_PLUGIN_DIR . 'admin/ctl-meta-fields.php';
+				
+				require_once CTL_PLUGIN_DIR . 'admin/codestar-framework/codestar-framework.php';
 
+
+				require_once CTL_PLUGIN_DIR . 'admin/feedback/users-feedback.php';
+				
 				/*** Plugin review notice file */
 				require_once CTL_PLUGIN_DIR . '/admin/notices/admin-notices.php';
 
@@ -145,6 +145,7 @@ if ( ! class_exists( 'CoolTimeline' ) ) {
 			require_once CTL_PLUGIN_DIR . 'admin/ctl-shortcode-generator.php';
 
 		}
+
 		public function onInit() {
 
 			if ( self::is_theme_activate( 'Divi' ) ) {
@@ -168,6 +169,7 @@ if ( ! class_exists( 'CoolTimeline' ) ) {
 			if ( did_action( 'elementor/loaded' ) ) {
 				$old_user_ele_install_notice = get_option( 'dismiss_ele_addon_notice' ) != false ? get_option( 'dismiss_ele_addon_notice' ) : 'no';
 				// check user already rated
+				
 
 				if ( $old_user_ele_install_notice == 'no' ) {
 					ctl_free_create_admin_notice(
@@ -175,7 +177,7 @@ if ( ! class_exists( 'CoolTimeline' ) ) {
 							'id'              => 'ctl-elementor-addon-notice',
 							'message'         => __(
 								'Greetings! We have noticed that you are currently using the <strong>Elementor Page Builder</strong>.</br> 
-						We would like to suggest trying out the latest <strong> <a href="https://coolplugins.net/product/elementor-timeline-widget-pro-addon/?utm_source=ctl_plugin&utm_medium=inside_notice&utm_campaign=get_pro&utm_content=use_twea_notice" target="_blank"> Timeline Widget Pro for Elementor </a></strong> plugin. <a class="button button-primary" href="https://coolplugins.net/product/elementor-timeline-widget-pro-addon/?utm_source=ctl_plugin&utm_medium=inside_notice&utm_campaign=get_pro&utm_content=use_twea_notice" target="_blank">Try it now!</a> </br>Showcase your life story or <strong>company history</strong> an <strong>elegant & precise</strong> way.
+						We would like to suggest trying out the latest <strong> <a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=ctl_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=twea_inside_notice" target="_blank"> Timeline Widget Pro for Elementor </a></strong> plugin. <a class="button button-primary" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=ctl_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=twea_inside_notice" target="_blank">Try it now!</a> </br>Showcase your life story or <strong>company history</strong> an <strong>elegant & precise</strong> way.
 						
 						',
 								'cool-timeline'
@@ -214,7 +216,14 @@ if ( ! class_exists( 'CoolTimeline' ) ) {
 
 		// loading language files
 		public function ctl_load_plugin_textdomain() {
+
 			load_plugin_textdomain( 'cool-timeline', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+
+			if ( is_admin() ) {
+				
+				require_once CTL_PLUGIN_DIR . 'admin/ctl-admin-settings.php';
+				require CTL_PLUGIN_DIR . 'admin/ctl-meta-fields.php';
+			}
 		}
 
 		public function ctl_plugin_redirection( $plugin ) {
@@ -225,8 +234,9 @@ if ( ! class_exists( 'CoolTimeline' ) ) {
 
 		// Add the settings link to the plugins page
 		public function ctl_settings_link( $links ) {
-			$settings_link = '<a href="admin.php?page=cool_timeline_settings">Settings</a>';
-			array_unshift( $links, $settings_link );
+			array_unshift( $links, '<a href="admin.php?page=cool_timeline_settings">Settings</a>' );
+			$links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/cool-timeline-pro/?utm_source=ctl_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugin_list" target="_blank">Get Pro</a>';
+
 			return $links;
 		}
 

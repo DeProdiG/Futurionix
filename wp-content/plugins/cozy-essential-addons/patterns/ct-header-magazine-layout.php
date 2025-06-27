@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Header Magazine Layout
  * Slug: cozy-essential-addons/ct-header-magazine-layout
- * Categories: ct-patterns, header
+ * Categories: ct-patterns
  */
 $ct_patterns_images = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/patterns-media/pattern_adv.png',

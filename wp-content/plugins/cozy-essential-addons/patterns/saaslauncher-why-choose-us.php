@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Why Choose Us 2
  * Slug: cozy-essential-addons/saaslauncher-why-choose-us
- * Categories: saaslauncher
+ * Categories: saaslauncher-about
  */
 $ct_patterns_media = array(
     COZY_ESSENTIAL_ADDONS_ASSETS_URL . 'admin/images/saaslauncher/rocket_img.jpg',

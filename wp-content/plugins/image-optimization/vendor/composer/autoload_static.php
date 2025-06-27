@@ -4,8 +4,22 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4cf7848c3d7e3b30582e3c6bcdb292a6
+class ComposerStaticInitb183bd9f6af3a7b35afa6985f7be5c17
 {
+    public static $prefixLengthsPsr4 = array (
+        'E' => 
+        array (
+            'Elementor\\WPNotificationsPackage\\' => 33,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Elementor\\WPNotificationsPackage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/elementor/wp-notifications-package/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -13,7 +27,9 @@ class ComposerStaticInit4cf7848c3d7e3b30582e3c6bcdb292a6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit4cf7848c3d7e3b30582e3c6bcdb292a6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb183bd9f6af3a7b35afa6985f7be5c17::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb183bd9f6af3a7b35afa6985f7be5c17::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb183bd9f6af3a7b35afa6985f7be5c17::$classMap;
 
         }, null, ClassLoader::class);
     }

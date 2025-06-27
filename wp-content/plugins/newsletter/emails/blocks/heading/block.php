@@ -22,13 +22,14 @@ $defaults = array(
 $options = array_merge($defaults, $options);
 
 $title_style = TNP_Composer::get_title_style($options, '', $composer);
+$options['text'] = strip_tags($options['text'], '<br><span><b><strong><i><em>')
 ?>
 
 <style>
     .title {
-        <?php $title_style->echo_css() ?>
+        <?php $title_style->echo_css(); ?>
         padding: 0;
-        line-height: normal !important;
+        line-height: 130% !important;
         letter-spacing: normal;
     }
 </style>
@@ -36,7 +37,7 @@ $title_style = TNP_Composer::get_title_style($options, '', $composer);
 <table border="0" cellspacing="0" cellpadding="0" width="100%" role="presentation">
     <tr>
         <td align="<?php echo esc_attr($options['align']) ?>" valign="middle"  dir="<?php echo $dir ?>">
-            <div inline-class="title"><?php echo wp_kses_post($options['text']); ?></div>
+            <div inline-class="title" role="heading" aria-level="1"><?php echo wp_kses_post($options['text']); ?></div>
         </td>
     </tr>
 </table>

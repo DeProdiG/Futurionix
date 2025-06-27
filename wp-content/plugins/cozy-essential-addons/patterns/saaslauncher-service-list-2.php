@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Services List 2
  * Slug: cozy-essential-addons/saaslauncher-service-list-2
- * Categories: saaslauncher
+ * Categories: saaslauncher-service
  */
 ?>
 <!-- wp:group {"metadata":{"categories":["saaslauncher"],"patternName":"cozy-essential-addons/saaslauncher-service-list-2","name":"PRO: Services List 2"},"style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"right":"var:preset|spacing|40","left":"var:preset|spacing|40","top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"backgroundColor":"black-color","layout":{"type":"constrained","contentSize":"1260px"}} -->

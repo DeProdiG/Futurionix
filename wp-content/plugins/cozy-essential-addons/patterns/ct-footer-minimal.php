@@ -3,7 +3,7 @@
 /**
  * Title: PRO: Footer Minimal
  * Slug: cozy-essential-addons/ct-footer-minimal
- * Categories: ct-patterns,footer
+ * Categories: ct-patterns
  */
 ?>
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"5rem","bottom":"3rem"}}},"backgroundColor":"border-color","layout":{"type":"constrained","contentSize":"1200px"}} -->

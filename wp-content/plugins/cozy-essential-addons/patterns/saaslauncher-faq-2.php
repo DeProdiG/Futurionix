@@ -3,7 +3,7 @@
 /**
  * Title: PRO: FAQ Accordion 2
  * Slug: cozy-essential-addons/saaslauncher-faq-2
- * Categories: saaslauncher
+ * Categories: saaslauncher-faqs
  */
 ?>
 <!-- wp:group {"metadata":{"categories":["saaslauncher"],"patternName":"cozy-essential-addons/saaslauncher-faq-2","name":"PRO: FAQ Accordion 2"},"style":{"spacing":{"padding":{"top":"7rem","bottom":"7rem","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"gradient":"gradient-ten","layout":{"type":"constrained","contentSize":"1180px"}} -->
